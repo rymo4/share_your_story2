@@ -3,4 +3,4 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 db/testing/*
-lib/tasks/sample_data.rake
+lib/tasks/*
