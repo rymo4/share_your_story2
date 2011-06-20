@@ -1,0 +1,16 @@
+<%= form_for([@essay, @ranking]) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <h3>Ranking? (required)</h3>
+  <div class="field">
+      <%= f.select :score, [['Please Select', 0], ['1: Horrible', 1], ['2: Poor', 2], ['3: Mediocre', 3], ['4: Good', 4], ['5: Amazing', 5]]%>
+  </div>
+  <h3>Comment? (optional)</h3>
+  <div class="field">
+    <%= f.text_area :comment %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
+

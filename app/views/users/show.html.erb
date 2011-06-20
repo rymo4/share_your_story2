@@ -1,0 +1,59 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+	<%if current_user.id==@user.id%>
+	
+	
+   	   <% unless @user.rankings.empty? %>
+	        <h2>Comments:</h2>
+			<%= will_paginate @rankings%>
+				<ul class="users">
+			  			<%= render @rankings.reverse%>
+				</ul>
+     		<%= will_paginate @rankings%>
+	      <% end %>
+	
+	
+		<%else%>
+		
+			<%if @user.rankings.count>0%>
+			<%=@user.name%> has ranked <%=@user.rankings.count%> essays.
+			<%else%>
+			<%=@user.name%> has not ranked essays.
+			<%end%>
+			
+		
+		
+		<%end%>
+		
+		
+		
+	    </td>
+	    <td class="sidebar round">
+	      <strong>Name:</strong> <%= @user.name %><br />
+	      <strong>URL:</strong> <%= link_to user_path(@user), @user %><br />
+	      <strong>Total Rankings:</strong> <%= @user.rankings.count %><br />
+				<%if current_user.id==@user.id%>
+				<strong>View Essays with a Score of: </strong>
+				<%= link_to "1: ", scoreindex1_path %><%= @user.rankings.where(:score=>1).count %>
+				<%= link_to "2: ", scoreindex2_path %><%= @user.rankings.where(:score=>2).count %>
+				<%= link_to "3: ", scoreindex3_path %><%= @user.rankings.where(:score=>3).count %>
+				<%= link_to "4: ", scoreindex4_path %><%= @user.rankings.where(:score=>4).count %>
+				<%= link_to "5: ", scoreindex5_path %><%= @user.rankings.where(:score=>5).count %>
+				<%= link_to "6: ", scoreindex6_path %><%= @user.rankings.where(:score=>6).count %>
+				<%= link_to "7: ", scoreindex7_path %><%= @user.rankings.where(:score=>7).count %>
+				<%= link_to "8: ", scoreindex8_path %><%= @user.rankings.where(:score=>8).count %>
+				<%= link_to "9: ", scoreindex9_path %><%= @user.rankings.where(:score=>9).count %>
+				<%= link_to "10: ", scoreindex10_path %><%= @user.rankings.where(:score=>10).count %>
+				<%end%>
+			
+		
+	    </td>
+	  </tr>
+	</table>
+	
+

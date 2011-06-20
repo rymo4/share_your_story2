@@ -1,0 +1,49 @@
+<% if signed_in? && current_user.admin?%>
+<h1><center>THE CONTROL CENTER</center></h1>
+
+<h2>Stats</h2>
+<p>
+<strong>Total Users: </strong><%= User.count%> <br>
+<strong>Total Essays: </strong><%= Essay.count %> <br>
+<strong>Total Rankings: </strong><%= Ranking.count %> <br>
+<strong>Mean Rankings Per User</strong> <%= @mean_rank_per_user%> <br>
+<strong>Mean Score: </strong> <%= @mean_score %>
+</p>
+
+<h2>Top Essays<h2>
+	<table>
+	
+	<tr>
+	<th>Position</th>
+	<th>Essay</th>
+	<th>Score</th>
+	</tr>
+	
+	<%@essays_arr.each do |i|%>
+	<tr class="users center">
+	<td><%= @essays_arr.index(i)+1%></td>
+	<td><%= render Essay.find(i[0])%></td>
+	<td><%= i[1]%></td>
+	</tr>
+	<%end%>
+	
+
+
+	
+
+	</table>
+
+<% else %>
+  <%= link_to "Please sign in!", signin_path %>
+<% end %>
+
+
+
+
+
+	
+
+
+</tr>
+
+</table>

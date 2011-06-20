@@ -1,0 +1,33 @@
+<% if signed_in? %>
+  
+
+<% if !@unranked.empty?%>
+<h1>
+	<center>
+	Some Essays You Haven't Ranked
+	</cetner>
+</h1>
+<%= render 'shared/essay_list' %>
+<%else%>
+<br>
+<h2><center>You've ranked all the essays!<center></h2>
+<%end%>
+
+<% else %>
+
+  <h1 class="welcome">Share Your Story!</h1>
+
+  <p class="indent">
+    This is the website used internally for the <em>Share Your Story Scholarship and Book Project</em>. <em>Share Your Story</em> is a non-profit designed to
+	help low income students pay for college both by providing fiscal assistance and by educating the public through a compilation of college essays.
+  </p>
+  <p class="indent">
+		If you are interested in the project or would like to apply for the scholarship, please see our public website, <a href="http://www.ShareYourStoryEssays.com">ShareYourStoryEssays.com</a>.
+  </p>
+  <p class="indent">
+	If you are here because you were selected as a reader, please sign up now!
+  <p>
+
+  <%= link_to "Sign up now!", signup_path, :class => "signup_button round border" %>
+
+<% end %>

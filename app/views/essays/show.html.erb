@@ -1,0 +1,25 @@
+<% if signed_in? %>
+<div class="paperheader">
+<h1>
+	<%= @author %>
+</h1>
+
+<h3>
+	<%= "Submission Number " + @author_num.to_s %>
+</h3>
+
+</div>
+<p class="justify indent">
+	<%= @body.gsub(/\n/, '<p class="indent justify">').html_safe %>
+</p>
+<% if !@existing_ranking.nil?%>
+<h2><center>You've ranked this essay before!</center></h2>
+<p><strong><%= "Previous Ranking: "%></strong>  <%=@existing_ranking.score.to_s%></p>
+<p><strong><%= "Previous Comment: "%></strong> <%=@existing_ranking.comment %></p>
+<%end%>
+<h2 class="micropost"><center>What did you think?</center></h2>
+<% if !@existing_ranking.nil?%><h3 class="warning">This will overwrite your previous comment and ranking. Be careful!</h3><%end%>
+<%= render 'shared/ranking_form' %>
+<% else %>
+  <%= link_to "Please sign in!", root_path %>
+<% end %>

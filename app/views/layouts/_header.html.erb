@@ -1,0 +1,33 @@
+<header>
+	
+  <strong>
+	<%link_to logo, root_path %>
+	<div class="logo">
+	<%= link_to "Share Your Story", root_path, {:style=>'color:#FFFFFF;text-decoration:none;', :class => "css_class"} %>
+	</div>
+  </strong>
+  <nav class="round border shadow topnav">
+	
+    <ul>
+	
+	  <% if signed_in? && current_user.admin? %>
+	  <li><%= link_to "CONTROL CENTER", control_path %>
+	  <%end%>
+      <li><%= link_to "Home", root_path %></li>
+      <% if signed_in? %>
+      <li><%= link_to "Readers", users_path %></li>
+	  <li><%= link_to "Essays", essays_path %></li>
+      <li><%= link_to "Profile", current_user %></li>
+      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+	  <li><%= link_to "Help", help_path %></li>
+      <% end %>
+      
+      <% if signed_in? %>
+      <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+      <% else %>
+      <li><%= link_to "Sign in", signin_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+</header>

@@ -1,0 +1,29 @@
+
+
+
+
+
+<table>
+
+<tr>
+<th><center>Author and Submission Number (Showing <%= @unranked.first(50).length%> of <%=@unranked.length%> remaining)</center></th>
+
+</tr>
+<% @unranked.first(50).each do |essay_id|%>
+
+<tr class="users center">
+<td><%= render Essay.find(essay_id) %></td>
+</tr>
+<%end%>
+</table>
+
+
+
+
+
+
+
+
+
+
+
