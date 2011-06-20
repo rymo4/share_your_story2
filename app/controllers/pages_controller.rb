@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   
   def home
       @title = "Home"
-      @micropost = Micropost.new if signed_in?
+     
       @essay=Essay.where('true')
       if signed_in?
           @rankings=current_user.rankings
@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   end
   
   def bio
-    @title="Bio's"
+    @title="Bios"
   end
   
   def about

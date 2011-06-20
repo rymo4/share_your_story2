@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_filter :admin_user,   :only => :destroy
   
   
+  
+  
   def new
     @title= "Sign up"
     @user=User.new
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
      @user = User.new(params[:user])
      if @user.save
        sign_in @user
-       flash[:success] = "Welcome to the Sample App!"
+       flash[:success] = "Welcome to Share Your Story"
        redirect_to @user
      else
        @title = "Sign up"
