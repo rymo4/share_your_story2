@@ -25,6 +25,7 @@ ShareYourStory::Application.routes.draw do
     match '/help',    :to => 'pages#help'
     match '/control', :to => 'pages#control'
     match '/bio', :to => 'pages#bio'
+    match '/scoreindex0', :to => 'essays#scoreindex0'
     match '/scoreindex1', :to => 'essays#scoreindex1'
     match '/scoreindex2', :to => 'essays#scoreindex2'
     match '/scoreindex3', :to => 'essays#scoreindex3'

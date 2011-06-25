@@ -39,6 +39,7 @@
 	      <strong>Total Rankings:</strong> <%= @user.rankings.count %><br />
 				<%if current_user.id==@user.id%>
 				<strong>View Essays with a Score of: </strong>
+				<%= link_to "Reread: ", scoreindex0_path %><%= @user.rankings.where(:score=>0).count %>
 				<%= link_to "1: ", scoreindex1_path %><%= @user.rankings.where(:score=>1).count %>
 				<%= link_to "2: ", scoreindex2_path %><%= @user.rankings.where(:score=>2).count %>
 				<%= link_to "3: ", scoreindex3_path %><%= @user.rankings.where(:score=>3).count %>

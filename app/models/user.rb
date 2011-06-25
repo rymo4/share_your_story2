@@ -15,16 +15,12 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :invite_code
   has_many :microposts, :dependent => :destroy
   has_many :rankings, :dependent => :destroy
-  
-  
-  
   before_save :downcase_fields
+  before_save :encrypt_password
 
   def downcase_fields
     self.email.downcase!
   end
-  
-  
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -45,9 +41,6 @@ class User < ActiveRecord::Base
          value && value == "1121"
   end                  
                       
-                      
-  before_save :encrypt_password
-    
   def invite_code
       @invite_code
   end
@@ -55,7 +48,6 @@ class User < ActiveRecord::Base
   def invite_code=(code)
        @invite_code=code
   end
-    
     
     # Return true if the user's password matches the submitted password.
   def has_password?(submitted_password)

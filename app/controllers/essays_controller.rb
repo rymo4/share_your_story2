@@ -25,7 +25,9 @@ class EssaysController < ApplicationController
          @essay = Essay.find(params[:id])
    end
    
-   
+   def scoreindex0
+      @lookup=0
+   end
    def scoreindex1
      @lookup=1
    end

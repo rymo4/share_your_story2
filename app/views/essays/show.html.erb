@@ -15,7 +15,12 @@
 <% if !@existing_ranking.nil?%>
 <h2><center>You've ranked this essay before!</center></h2>
 <p><strong><%= "Previous Ranking: "%></strong>  <%=@existing_ranking.score.to_s%></p>
-<p><strong><%= "Previous Comment: "%></strong> <%=@existing_ranking.comment %></p>
+	<%if @existing_ranking.comment.empty?%>
+		<p><strong><%= "Previous Comment: "%></strong> None. </p>
+	<% else %>
+		<%=@existing_ranking.comment %></p>
+	<% end %>
+
 <%end%>
 <h2 class="micropost"><center>What did you think?</center></h2>
 <% if !@existing_ranking.nil?%><h3 class="warning">This will overwrite your previous comment and ranking. Be careful!</h3><%end%>

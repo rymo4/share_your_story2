@@ -40,7 +40,8 @@ class PagesController < ApplicationController
       total_score+=ranking.score
     end
     
-    @mean_score=total_score/Ranking.count
+    @mean_score=total_score/(Ranking.count-Ranking.where(:score=>0).count)
+    
     @mean_rank_per_user=0.0
     @mean_rank_per_user=Ranking.count/User.count
     
@@ -51,23 +52,22 @@ class PagesController < ApplicationController
       total_score=0
       if !Ranking.find_by_essay_id(essay.id).nil?
       Ranking.where(:essay_id=>essay.id).each do |ranking|
-       essay_scores<<ranking.score
+        unless ranking.score==0
+          essay_scores<<ranking.score
+        end
       end
     end
-      essay_scores.each do |score|
+    essay_scores.each do |score|
         total_score+=score
-      end
-      if !essay_scores.empty?
-        essay_ids_with_mean_score[essay.id]=total_score/essay_scores.length
-      else
-        essay_ids_with_mean_score[essay.id]=0
-      end
-      @essays_arr=[]
-      @essays_arr=essay_ids_with_mean_score.sort_by {|key, value| value}
-      @essays_arr.reverse!
     end
-    
+    if !essay_scores.empty?
+        essay_ids_with_mean_score[essay.id]=total_score/essay_scores.length
+    else
+        essay_ids_with_mean_score[essay.id]=0
+    end
+    @essays_arr=[]
+    @essays_arr=essay_ids_with_mean_score.sort_by {|key, value| value}
+    @essays_arr.reverse! 
+    end    
   end
-  
-  
 end

@@ -2,7 +2,7 @@
   <td class="micropost">
     <span class="content"><strong>Score: </strong> <%=ranking.score%>, <strong>Comment: </strong><% if !ranking.comment.empty?%><%= ranking.comment %></span><%else%>None.<%end%>
     <span class="timestamp">
-      -Posted <%= time_ago_in_words(ranking.updated_at) %> ago. <%= link_to "View.", Essay.find(ranking.essay_id) %> </br>
+      -Posted <%= time_ago_in_words(ranking.updated_at) %> ago. <%= link_to "View Essay.", Essay.find(ranking.essay_id) %> </br>
     </span>
   </td>
 </tr>

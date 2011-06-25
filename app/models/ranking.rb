@@ -1,7 +1,7 @@
 class Ranking < ActiveRecord::Base
   #attr_accessible :content, :score, :essay_id
   
-  validates :score, :presence => true, :inclusion => { :in => [1,2,3,4,5,6,7,8,9,10] }
+  validates :score, :presence => true, :inclusion => { :in => [0,1,2,3,4,5,6,7,8,9,10] }
   #validates :user_id, :presence => true
   
   belongs_to :essay
